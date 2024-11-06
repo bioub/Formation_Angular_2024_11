@@ -1,0 +1,42 @@
+<form (submit)="handleSubmit($event)">
+
+  <div [class.error]="user.name === ''" [class.success]="user.name !== ''">
+    Name : <input type="text" [value]="user.name" [attr.data-name]="user.name" (input)="user.name = $any($event.target).value">
+    <!--
+      [value] va binder sur la propriété du DOM value
+      ex : inputEl.value = 'Romain' -->
+
+
+    <!--
+      inputEl.addEventListener('input', ($event) => {
+        component.user.name = ($event.target as any).value;
+        cd.detectChanges();
+      });
+    -->
+  </div>
+
+
+  <div>
+    Is active : <input type="checkbox" [checked]="user.isActive" (click)="user.isActive = $any($event.target).checked">
+    <!--
+      Contrairement à {{}}, ici on appelle pas .toString()
+    -->
+  </div>
+
+  <div>
+    Counter : <button type="button" (click)="handleCounterClick()">{{ user.count }}</button>
+  </div>
+  <!--
+  (click)="handleCounterClick()"
+  équivalent à :
+  buttonEl.addEventListener('click', (ev) => {
+    component.handleCounterClick()
+    cd.detectChanges();
+  });
+  -->
+
+  <div>
+    <button>Submit</button>
+  </div>
+
+</form>

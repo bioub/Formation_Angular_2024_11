@@ -11,7 +11,7 @@ import { HelloComponent } from './hello/hello.component';
     HelloComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, // qui lui même donne accès à CommonModule (UpperCasePipe, DatePipe, NgIfDirective...)
     AppRoutingModule
   ],
   providers: [],
