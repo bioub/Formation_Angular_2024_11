@@ -1,0 +1,31 @@
+<p>hello works!</p>
+
+<p>interpolation</p>
+<!-- on peut utiliser des expressions JS pour la plupart
+  attention certaines ne fonctionnent pas, ex : 2 ** 3
+-->
+{{ 1 + 2 }}
+
+<p>Hello {{ name }}</p>
+
+
+<!-- Mauvaise pratique (perf) d'appeler une fonction
+  avec {{ }} -->
+<!-- <p>Hello {{ hello() }}</p> -->
+
+<p>
+  {{ name | uppercase }}
+</p>
+
+<!-- si on passe un objet à l'interpolation
+  Angular appelle la méthode .toString()
+-->
+
+<p>
+  {{ now }}
+</p>
+
+
+<p>
+  {{ now | date:'HH:mm:ss' }}
+</p>

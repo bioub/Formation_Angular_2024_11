@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "TypeScript"
+		},
+		{
+			"path": "hello-angular-16"
+		},
+		{
+			"path": "hello-angular-18"
 		}
 	],
 	"settings": {
