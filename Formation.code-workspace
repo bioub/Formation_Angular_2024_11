@@ -7,5 +7,7 @@
 			"path": "TypeScript"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TypeScript"
+	}
 }
