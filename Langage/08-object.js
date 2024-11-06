@@ -100,7 +100,6 @@ console.log('toto instanceof User', toto instanceof User); true
 console.log('toto instanceof Object', toto instanceof Object); true
 console.log('toto instanceof String', toto instanceof String); true
 
-
 class Admin extends User {
   constructor(name) {
     super(name);
