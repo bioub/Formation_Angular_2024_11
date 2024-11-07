@@ -11,10 +11,21 @@
 <app-hello-world></app-hello-world>
 
 <h2>Exercice 2</h2>
-<app-multi-state-button></app-multi-state-button>
+<app-multi-state-button
+  [items]="['Toto', 'Titi', 'Tata']"
+  [value]="name"
+  (valueChange)="name = $event"
+></app-multi-state-button>
+
+<p>Selected name : {{ name }}</p>
 
 <h2>Select (style, if/for...)</h2>
 <app-select></app-select>
+<!--
+Exercice :
+Ajouter 2 input à Select (items et value)
+Ajouter 1 output valueChange à Select
+-->
 
 <h2>My Button (ng-content)</h2>
 <app-my-button>Contenu</app-my-button>

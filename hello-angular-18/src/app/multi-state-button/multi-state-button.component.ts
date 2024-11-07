@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-multi-state-button',
@@ -7,11 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./multi-state-button.component.css']
 })
 export class MultiStateButtonComponent {
-  items = ['Item 1', 'Item 2', 'Item 3'];
-  value = 'Item 2';
+  @Input() items = ['Item 1', 'Item 2', 'Item 3'];
+  @Input() value = 'Item 2';
+
+  @Output() valueChange = new EventEmitter<string>();
+
 
   next() {
     const index = this.items.indexOf(this.value);
     this.value = this.items[(index + 1) % this.items.length];
+
+    this.valueChange.emit(this.value);
   }
 }

@@ -17,5 +17,5 @@ import { MyCardComponent } from "./my-card/my-card.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'hello-angular-18';
+  name = 'Titi';
 }
