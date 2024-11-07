@@ -1,4 +1,6 @@
-<div class="value" (click)="isMenuOpen = !isMenuOpen">B</div>
+<div class="value" (click)="isMenuOpen = !isMenuOpen">
+  {{ value }}
+</div>
 
 <!-- <div class="menu" *ngIf="isMenuOpen">
    <div class="item" *ngFor="let item of items">
@@ -9,7 +11,7 @@
 @if (isMenuOpen) {
   <div class="menu">
     @for (item of items; track item) {
-      <div class="item">
+      <div class="item" (click)="handleItemClick(item)">
         {{ item }}
       </div>
     }

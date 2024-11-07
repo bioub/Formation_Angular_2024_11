@@ -1,6 +1,6 @@
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { HelloPipe } from '../hello.pipe';
+import { HelloPipe } from '../../hello.pipe';
 
 @Component({
   selector: 'app-hello',

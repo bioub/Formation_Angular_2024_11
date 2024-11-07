@@ -2,7 +2,24 @@
 <app-hello></app-hello>
 
 <h2 class="value">Clock (Data binding, detection de changement)</h2>
-<app-clock></app-clock>
+<app-clock [format]="format" [delay]="delay"></app-clock>
+
+<div>
+  Format :
+  <input
+    type="text"
+    [value]="format"
+    (input)="format = $any($event.target).value"
+  />
+</div>
+<div>
+  Delay :
+  <input
+    type="number"
+    [value]="delay"
+    (input)="delay = $any($event.target).valueAsNumber"
+  />
+</div>
 
 <h2>My Form (Property binding, class binding, attribute binding, events)</h2>
 <app-my-form></app-my-form>
@@ -20,7 +37,21 @@
 <p>Selected name : {{ name }}</p>
 
 <h2>Select (style, if/for...)</h2>
-<app-select></app-select>
+<!-- <app-select
+  [items]="['Toto', 'Titi', 'Tata']"
+  [value]="name"
+  (valueChange)="name = $event"
+></app-select> -->
+
+<!--
+[()] BANANA IN A BOX
+utilisable :
+- si input qqchose et output qqchoseChange
+(si l'output a le meme nom d'un input suffixé par Change)
+- propriété du parent qui est passé à l'input
+- et la valeur émise par l'output remonte dans cette propriété parent
+-->
+<app-select [items]="['Toto', 'Titi', 'Tata']" [(value)]="name"></app-select>
 <!--
 Exercice :
 Ajouter 2 input à Select (items et value)
