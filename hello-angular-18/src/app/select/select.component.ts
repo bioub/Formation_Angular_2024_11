@@ -1,10 +1,10 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-select',
   standalone: true,
-  imports: [NgClass, NgIf],
+  imports: [NgClass, NgIf, NgFor],
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',
   // encapsulation: ViewEncapsulation.ShadowDom
