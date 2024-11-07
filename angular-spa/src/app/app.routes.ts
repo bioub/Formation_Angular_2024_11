@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,8 @@ export const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [authGuard],
+    canActivateChild: [authGuard],
     children: [
       {
         path: 'add',

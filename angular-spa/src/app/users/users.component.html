@@ -1,11 +1,10 @@
 <div class="left">
   <ul>
+    @for(user of users; track user.id) {
     <li>
-      <a routerLink="123">Toto</a>
+      <a [routerLink]="[user.id]">{{ user.name }}</a>
     </li>
-    <li>
-      <a routerLink="234">Titi</a>
-    </li>
+    }
   </ul>
   <a routerLink="add">Ajouter</a>
 </div>
