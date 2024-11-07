@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "hello-angular-18"
+		},
+		{
+			"path": "angular-spa"
 		}
 	],
 	"settings": {
