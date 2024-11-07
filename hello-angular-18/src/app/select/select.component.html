@@ -1,0 +1,48 @@
+<div class="value" (click)="isMenuOpen = !isMenuOpen">B</div>
+
+<!-- <div class="menu" *ngIf="isMenuOpen">
+   <div class="item" *ngFor="let item of items">
+      {{ item }}
+    </div>
+</div>  -->
+
+@if (isMenuOpen) {
+  <div class="menu">
+    @for (item of items; track item) {
+      <div class="item">
+        {{ item }}
+      </div>
+    }
+  </div>
+}
+
+
+<!-- Nouveautés de Angular 17 : Control Flow Syntax -->
+<!-- @if (items.length > 0) {
+  <div class="menu">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+}
+@else {
+  <p>No items</p>
+} -->
+
+<!-- <div class="menu" *ngIf="items.length > 0 as isItemsFilled; else noItemsTemplate">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+</div>
+
+<ng-template #noItemsTemplate>
+  <p>No items</p>
+</ng-template> -->
+
+<!-- <ng-template [ngIf]="isMenuOpen">
+  <div class="menu">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+</ng-template> -->
