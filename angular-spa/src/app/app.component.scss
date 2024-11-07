@@ -1,5 +1,10 @@
 nav {
   a {
     margin-right: 4px;
+
+    &.current {
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 }
