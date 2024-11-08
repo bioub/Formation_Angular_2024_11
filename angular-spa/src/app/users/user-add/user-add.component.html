@@ -1,14 +1,18 @@
-<form (submit)="onSubmit($event)">
+<form (submit)="onSubmit()" [formGroup]="userForm">
   <div>
-    Name: <input type="text">
+    Name: <input type="text" formControlName="name">
+
+    @if (userForm.get('name')?.touched && userForm.get('name')?.hasError('required')) {
+      <span>Le champ est obligatoire</span>
+    }
   </div>
 
   <div>
-    Email: <input type="email">
+    Email: <input type="email" formControlName="email">
   </div>
 
   <div>
-    Phone: <input type="tel">
+    Phone: <input type="tel" formControlName="phone">
   </div>
 
   <button>Add</button>
