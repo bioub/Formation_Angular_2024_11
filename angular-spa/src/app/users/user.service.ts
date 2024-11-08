@@ -33,4 +33,8 @@ export class UserService {
 
     return user$;
   }
+
+  create(user: User) {
+    return this.httpClient.post<User>('https://jsonplaceholder.typicode.com/users', user);
+  }
 }

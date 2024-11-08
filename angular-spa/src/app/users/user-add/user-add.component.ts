@@ -12,14 +12,16 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './user-add.component.scss'
 })
 export class UserAddComponent implements OnInit {
-
-
   private userService = inject(UserService);
 
   userForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('romain.bohdanowicz@formation.tech', [Validators.email]),
     phone: new FormControl('06 00 00 00 00', []),
+    address: new FormGroup({
+      city: new FormControl('Bordeaux', [Validators.required]),
+      zipcode: new FormControl('33000', [Validators.maxLength(6)]),
+    }),
   });
 
   onSubmit() {
@@ -27,13 +29,10 @@ export class UserAddComponent implements OnInit {
       return;
     }
 
-    // TODO
-    // Envoyer la requete POST
     const user = this.userForm.value as User;
 
-    this.userService.userAdded$.next({
-      id: 11,
-      ...user,
+    this.userService.create(user).subscribe((newUser) => {
+      this.userService.userAdded$.next(newUser);
     });
   }
 
