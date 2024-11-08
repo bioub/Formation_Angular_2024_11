@@ -35,5 +35,9 @@ export class UsersComponent implements OnInit {
     this.userService.getAll().subscribe((data) => {
       this.users = data;
     });
+
+    this.userService.userAdded$.subscribe((newUser) => {
+      this.users.push(newUser);
+    });
   }
 }

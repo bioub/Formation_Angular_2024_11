@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from './user.model';
-import { delay } from 'rxjs';
+import { delay, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+
+  userAdded$ = new Subject<User>();
+
   private httpClient = inject(HttpClient);
 
   getAll() {

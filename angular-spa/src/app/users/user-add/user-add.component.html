@@ -1,1 +1,15 @@
-<p>user-add works!</p>
+<form (submit)="onSubmit($event)">
+  <div>
+    Name: <input type="text">
+  </div>
+
+  <div>
+    Email: <input type="email">
+  </div>
+
+  <div>
+    Phone: <input type="tel">
+  </div>
+
+  <button>Add</button>
+</form>
