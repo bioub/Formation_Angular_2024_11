@@ -1,12 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../user.model';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
   imports: [],
   templateUrl: './user-details.component.html',
-  styleUrl: './user-details.component.scss'
+  styleUrl: './user-details.component.scss',
 })
-export class UserDetailsComponent {
+export class UserDetailsComponent implements OnInit {
+  private userService = inject(UserService);
+  private activatedRoute = inject(ActivatedRoute);
 
+  user!: User;
+
+  ngOnInit(): void {
+    // Snapshot
+    // const params = this.activatedRoute.snapshot.params;
+    // console.log(params['userId']);
+
+    // this.activatedRoute.params.subscribe((params) => {
+    //   this.userService.getById(params['userId']).subscribe({
+    //     next: (user) => {
+    //       this.user = user;
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //     },
+    //   });
+    // });
+
+    this.activatedRoute.params
+      .pipe(
+        map((params) => params['userId']),
+        switchMap((userId) => this.userService.getById(userId))
+      )
+      .subscribe({
+        next: (user) => {
+          this.user = user;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
 }
