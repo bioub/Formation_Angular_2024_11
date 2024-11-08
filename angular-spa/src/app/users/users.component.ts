@@ -8,6 +8,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { User } from './user.model';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-users',
@@ -17,10 +18,10 @@ import { User } from './user.model';
   styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit {
-
   users: User[] = [];
 
-  private httpClient = inject(HttpClient);
+  private userService = inject(UserService);
+  private title = inject(Title);
 
   // constructor(
   //   private httpClient: HttpClient,
@@ -30,12 +31,9 @@ export class UsersComponent implements OnInit {
   // ) {}
 
   ngOnInit(): void {
-    // Requete HTTP pour récupérer des users
-    // GET https://jsonplaceholder.typicode.com/users
-    this.httpClient
-      .get<User[]>('https://jsonplaceholder.typicode.com/users')
-      .subscribe((data) => {
-        this.users = data;
-      });
+    this.title.setTitle('Users');
+    this.userService.getAll().subscribe((data) => {
+      this.users = data;
+    });
   }
 }

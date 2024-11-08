@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-clock',
@@ -8,7 +8,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss'
 })
-export class ClockComponent implements OnInit, OnChanges, OnDestroy {
+export class ClockComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
   now = new Date();
 
   @Input() format = 'HH:mm';
@@ -28,6 +28,8 @@ export class ClockComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
     if (changes['delay'].previousValue === changes['delay'].currentValue) {
       return;
     }
@@ -39,8 +41,20 @@ export class ClockComponent implements OnInit, OnChanges, OnDestroy {
     }, this.delay);
   }
 
+  ngDoCheck(): void {
+    // console.log("Le composant est checké");
+  }
+
   ngOnDestroy(): void {
     clearInterval(this.interval);
+
+    // setTimeout / clearTimeout
+    // setInterval / clearInterval
+    // addEventListener / removeEventListener
+    // new WebSocket() / ws.close()
+    // new Worker() / worker.destroy();
+    // new S3Client() / client.close();
+    // new Observable() / subscription.unsubscribe()
   }
 
 }
